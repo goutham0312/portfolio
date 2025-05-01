@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goutham Sai Irragavarapu - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --text-color: #333;
+            --text-light: #666;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 2rem;
+            --border-radius: 5px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-md);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--light-color);
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary-color);
+        }
+
+        .profile-details h1 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .profile-details p {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-sm);
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--light-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            padding: var(--spacing-md) 0;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-list a {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-list a:hover {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        /* Section Styles */
+        section {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .section-title {
+            position: relative;
+            font-size: 2rem;
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-sm);
+            color: var(--primary-color);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height:.25rem;
+            background-color: var(--secondary-color);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        /* Education Section */
+        .education-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: var(--box-shadow);
+        }
+
+        .education-title {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .education-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+        }
+
+        .education-date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Experience Section */
+        .experience-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: var(--box-shadow);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+        }
+
+        .experience-company {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .experience-duration {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .experience-location {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .experience-description ul {
+            padding-left: var(--spacing-lg);
+        }
+
+        .experience-description li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: var(--box-shadow);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .project-description ul {
+            padding-left: var(--spacing-lg);
+        }
+
+        .project-description li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .skills-category {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .skills-category h3 {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--dark-color);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+
+        .skill-badge {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+
+        /* Certificates Section */
+        .certificates-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .certificate-item {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            box-shadow: var(--box-shadow);
+        }
+
+        .certificate-name {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+        }
+
+        .certificate-date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Contact Section */
+        .contact-details {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: var(--box-shadow);
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-info-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info-item i {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .contact-info-item h3 {
+            font-size: 1rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-light);
+        }
+
+        .contact-info-item p {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .contact-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .contact-info {
+            display: flex;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .copyright {
+            margin-top: var(--spacing-md);
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .profile-section {
+                padding: var(--spacing-md);
+            }
+
+            .nav-list {
+                gap: var(--spacing-md);
+            }
+
+            .experience-header {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-list {
+                gap: 0.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .profile-details h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .education-card, .experience-card, .project-card, .certificate-item {
+                padding: var(--spacing-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="profile-section">
+                <div class="profile-img">
+                    <img style="justify-content: center; align-items: center; width: 200px; height: 200px; border-radius: 50%; object-fit: cover;display: block;margin: 50px auto;" src="https://github.com/goutham0312/profile/blob/main/ProfilePhoto.JPG?raw=true"></i>
+                </div>
+                <div class="profile-details">
+                    <h1>Goutham Sai Irragavarapu</h1>
+                    <p>Frontend Engineer</p>
+                    <div class="social-links" style="justify-content: center; align-items: center; gap: 24px;">
+                        <a href="mailto:gouthamsai2211@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:7993078032" title="Phone"><i class="fas fa-phone"></i></a>
+                        <a href="https://linkedin.com/in/goutham-sai-irragavarapu-565125249" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/goutham0312" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-list">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#certificates">Certificates</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <p>I am a Frontend Engineer with experience in building responsive and interactive user interfaces. I have recently completed my Bachelor of Technology in Computer Science and Engineering from Vidya Jyothi Institute of Technology.</p>
+                    <p>I am passionate about creating clean, maintainable, and scalable code that translates beautiful designs into functional web components and pages. With a strong foundation in HTML, CSS, JavaScript, and various other technologies, I enjoy solving real-world challenges through technology.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <div class="container">
+                <h2 class="section-title">Education</h2>
+                <div class="education-card">
+                    <h3 class="education-title">Bachelor of Technology (CSE)</h3>
+                    <p class="education-subtitle">Vidya Jyothi Institute of Technology</p>
+                    <p>CGPA: 7.19</p>
+                    <p class="education-date">2020 - 2024</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <div class="container">
+                <h2 class="section-title">Professional Experience</h2>
+                
+                <!-- Professional Experience -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Frontend Engineer</h3>
+                            <p class="experience-company">Genpact</p>
+                        </div>
+                        <div>
+                            <p class="experience-duration">May 2024 - December 2024</p>
+                            <p class="experience-location">Hyderabad, India</p>
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Built responsive and interactive user interfaces using HTML, CSS, and JavaScript</li>
+                            <li>Translated Figma designs into functional web components and pages</li>
+                            <li>Wrote clean, maintainable, and scalable code with proper documentation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Internship -->
+                <h2 class="section-title">Internship</h2>
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Micro-Internship on Data Science</h3>
+                            <p class="experience-company">IBM Skill Build and CSR-BOX</p>
+                        </div>
+                        <div>
+                            <p class="experience-duration">February 2024 - March 2024</p>
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>This internship, offered in collaboration with IBM's SkillBuild initiative and CSRBOX, focused on equipping learners with foundational and advanced knowledge in data science</li>
+                            <li>Gained practical experience by working on projects, using IBM tools and platforms contributing to solutions that address real-world challenges making me well-prepared for careers in data science</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3 class="project-title">Water Quality Analysis Using Machine Learning</h3>
+                        <div class="project-description">
+                            <ul>
+                                <li>Developed a system that predicts and assesses the quality of water based on various chemical and physical parameters</li>
+                                <li>Leveraged machine learning algorithms to analyze data such as pH levels, turbidity, dissolved oxygen, and contaminant concentrations to classify water as safe or unsafe for consumption</li>
+                                <li>Built accurate predictive models for environmental agencies and water management authorities to monitor water quality, identify potential contamination, and ensure public health and safety</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3 class="project-title">Android Malware Detection Using Machine Learning (ML) and Deep Learning (DL)</h3>
+                        <div class="project-description">
+                            <ul>
+                                <li>Developed a system to detect malicious Android applications by analyzing their behavior and characteristics</li>
+                                <li>Utilized both traditional ML algorithms and advanced DL models to improve the accuracy and efficiency of malware detection compared to traditional methods</li>
+                                <li>Trained the system on a dataset of benign and malicious APK files, extracting features such as permissions, API calls, and network behavior</li>
+                                <li>Created a real-time detection tool that can identify and classify potential threats, providing enhanced security for Android users</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-container">
+                    <div class="skills-category">
+                        <h3>Technologies</h3>
+                        <div class="skills-list">
+                            <span class="skill-badge">HTML</span>
+                            <span class="skill-badge">CSS</span>
+                            <span class="skill-badge">JavaScript</span>
+                            <span class="skill-badge">Java</span>
+                            <span class="skill-badge">SQL</span>
+                            <span class="skill-badge">SAP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates Section -->
+        <section id="certificates">
+            <div class="container">
+                <h2 class="section-title">Certificates</h2>
+                <div class="certificates-list">
+                    <div class="certificate-item">
+                        <h3 class="certificate-name">Database system with SQL by ORACLE</h3>
+                        <p class="certificate-date">2021</p>
+                    </div>
+                    <div class="certificate-item">
+                        <h3 class="certificate-name">SAP Materials Management (MM)</h3>
+                    </div>
+                    <div class="certificate-item">
+                        <h3 class="certificate-name">Front End Development-HTML by Great Learning</h3>
+                        <p class="certificate-date">February 2024</p>
+                    </div>
+                    <div class="certificate-item">
+                        <h3 class="certificate-name">AWS Cloud Practitioner Essentials</h3>
+                        <p class="certificate-date">2025</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Contact Me</h2>
+                <div class="contact-details">
+                    <div class="contact-card">
+                        <div class="contact-info-item">
+                            <i class="fas fa-user"></i>
+                            <div>
+                                <h3>Name</h3>
+                                <p>Goutham Sai Irragavarapu</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h3>Email</h3>
+                                <p><a href="mailto:gouthamsai2211@gmail.com">gouthamsai2211@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h3>Phone</h3>
+                                <p><a href="tel:7993078032">7993078032</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>Location</h3>
+                                <p>Hyderabad, India</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fab fa-linkedin"></i>
+                            <div>
+                                <h3>LinkedIn</h3>
+                                <p><a href="https://linkedin.com/in/goutham-sai-irragavarapu-565125249" target="_blank">goutham-sai-irragavarapu</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <h3>GitHub</h3>
+                                <p><a href="https://github.com/goutham0312" target="_blank">goutham0312</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>gouthamsai2211@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>7993078032</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Hyderabad, India</span>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/goutham-sai-irragavarapu-565125249" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/goutham0312" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="copyright">© 2025 Goutham Sai Irragavarapu. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add hover effects for contact items
+        document.querySelectorAll('.contact-info-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transition = 'transform 0.3s, box-shadow 0.3s';
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add active class to nav links on scroll
+        window.addEventListener('scroll', function() {
+            let sections = document.querySelectorAll('section');
+            let navLinks = document.querySelectorAll('.nav-list a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
